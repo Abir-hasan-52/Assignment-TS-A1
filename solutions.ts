@@ -27,7 +27,7 @@ const checkType = (input: StringOrNumber): string => {
 };
 
 // console.log(checkType("Hello"));
-// console.log(checkType(100));
+// console.log(checkType(42));
 
 // Solution 4: Write a generic function getProperty that takes an object and a key, then returns the value of that key. Use constraints to ensure the key exists on the object.
 
@@ -41,4 +41,26 @@ const getProperty = <T, K extends keyof T>(obj: T, key: K): T[K] => {
   return obj[key];
 };
 
-console.log(getProperty(user, "name"));
+// console.log(getProperty(user, "name"));
+
+// solution 5: Define an interface Book with properties title, author, and publishedYear. Create a function toggleReadStatus that accepts a Book object and returns a new object with an added isRead property (boolean), defaulting to true.
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+}
+
+const toggleReadStatus = (book: Book) => {
+  return {
+    ...book,
+    isRead: true,
+  };
+};
+
+const myBook: Book = {
+  title: "TypeScript Guide",
+  author: "Jane Doe",
+  publishedYear: 2024,
+};
+console.log(toggleReadStatus(myBook));
